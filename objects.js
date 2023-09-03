@@ -293,8 +293,10 @@ let emp = {
     width: 50,
   },
 };
+emp.itself = emp; // create circular reference
 let clone = structuredClone(emp);
 console.log(emp.sizes === clone.sizes); // false, different objects
 // user and clone are totally unrelated now
 emp.sizes.width = 60; // change a property from one place
 console.log(clone.sizes.width); // 50, not related
+console.log(clone.itself === clone); // circular reference is preserved
