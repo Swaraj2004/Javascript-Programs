@@ -283,9 +283,12 @@ console.log(objclone1); // { a: 1, b: 2 }
 console.log(objclone2); // { a: 1, b: 2 }
 console.log(objclone3); // { a: 1, b: 2 }
 // Nested objects wont be cloned completely as inner object's reference will be stored
+// Only objclone2 will deep clone here as it converts to string and back to object
+// but JSON.stringify doesnt work on circular structure so use alternative given below
 
 // structuredClone
 // The call structuredClone(object) clones the object with all nested properties.
+// Function properties aren’t supported.
 let emp = {
   name: "John",
   sizes: {
